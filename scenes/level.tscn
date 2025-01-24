@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvmju2615f3sg"]
+
+[ext_resource type="PackedScene" uid="uid://cccxpsrjy50fn" path="res://scenes/platform.tscn" id="1_twqca"]
+[ext_resource type="PackedScene" uid="uid://bisonmpnq7akr" path="res://scenes/Player.tscn" id="2_ytdf1"]
+
+[node name="Level" type="Node2D"]
+
+[node name="floor" parent="." instance=ExtResource("1_twqca")]
+position = Vector2(0, 328)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_ytdf1")]
+position = Vector2(-171, 233)
+
+[node name="platform" parent="." instance=ExtResource("1_twqca")]
+position = Vector2(-260, 78)
