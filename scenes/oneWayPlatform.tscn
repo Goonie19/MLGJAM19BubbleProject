@@ -8,7 +8,7 @@ size = Vector2(100, 100)
 [node name="platform" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.286275)
+modulate = Color(1, 1, 1, 0.796078)
 texture = ExtResource("1_xssv5")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D"]
