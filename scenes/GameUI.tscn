@@ -1,0 +1,82 @@
+[gd_scene load_steps=6 format=3 uid="uid://brk0snem3ladu"]
+
+[ext_resource type="Script" path="res://scenes/game_ui.gd" id="1_3e12y"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ikgm2"]
+font_size = 140
+
+[sub_resource type="Animation" id="Animation_tsqvj"]
+resource_name = "countdown_anim"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.75, 0.75), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_t567m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rgoif"]
+_data = {
+"RESET": SubResource("Animation_t567m"),
+"countdown_anim": SubResource("Animation_tsqvj")
+}
+
+[node name="GameUI" type="Control" node_paths=PackedStringArray("timer", "countdown_text", "anim_player")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3e12y")
+timer = NodePath("Timer")
+countdown_text = NodePath("Label")
+anim_player = NodePath("AnimationPlayer")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -226.5
+offset_top = -130.5
+offset_right = 226.5
+offset_bottom = 130.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(226.5, 130.5)
+text = "3"
+label_settings = SubResource("LabelSettings_ikgm2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rgoif")
+}
+
+[connection signal="timeout" from="Timer" to="." method="continue_timer"]
