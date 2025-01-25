@@ -3,17 +3,16 @@
 [ext_resource type="Texture2D" uid="uid://cccv1cx6oao7x" path="res://icon.svg" id="1_aluny"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xgb8j"]
-size = Vector2(89.455, 82.84)
+size = Vector2(100, 100)
 
 [node name="platform" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(6.25453, 0.680001)
+modulate = Color(1, 1, 1, 0.286275)
 texture = ExtResource("1_aluny")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-gravity_scale = 0.0
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D"]
+scale = Vector2(1.265, 1.265)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-scale = Vector2(8.929, 1)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
 shape = SubResource("RectangleShape2D_xgb8j")

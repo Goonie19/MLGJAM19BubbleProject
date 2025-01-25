@@ -7,11 +7,13 @@
 
 [node name="floor" parent="." instance=ExtResource("1_twqca")]
 position = Vector2(0, 328)
+scale = Vector2(7.27, 1)
+
+[node name="platform" parent="." instance=ExtResource("1_twqca")]
+position = Vector2(-260, 78)
+scale = Vector2(2.385, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_ytdf1")]
-position = Vector2(-171, 233)
-
-[node name="platform" parent="." instance=ExtResource("1_twqca")]
-position = Vector2(-260, 78)
+position = Vector2(28, 203)
