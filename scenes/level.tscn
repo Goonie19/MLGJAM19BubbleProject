@@ -1,19 +1,60 @@
-[gd_scene load_steps=3 format=3 uid="uid://dvmju2615f3sg"]
+[gd_scene load_steps=4 format=3 uid="uid://dvmju2615f3sg"]
 
 [ext_resource type="PackedScene" uid="uid://cccxpsrjy50fn" path="res://scenes/platform.tscn" id="1_twqca"]
 [ext_resource type="PackedScene" uid="uid://bisonmpnq7akr" path="res://scenes/Player.tscn" id="2_ytdf1"]
+[ext_resource type="PackedScene" uid="uid://cyqv1p6v6hx61" path="res://scenes/oneWayPlatform.tscn" id="3_akl7p"]
 
 [node name="Level" type="Node2D"]
 
-[node name="floor" parent="." instance=ExtResource("1_twqca")]
-position = Vector2(0, 328)
-scale = Vector2(7.27, 1)
+[node name="Platforms" type="Node2D" parent="."]
 
-[node name="platform" parent="." instance=ExtResource("1_twqca")]
-position = Vector2(-260, 78)
-scale = Vector2(2.385, 1)
+[node name="floor" parent="Platforms" instance=ExtResource("1_twqca")]
+position = Vector2(0, 368)
+scale = Vector2(11.495, 1)
+
+[node name="wall_L" parent="Platforms" instance=ExtResource("1_twqca")]
+position = Vector2(-675, 60)
+rotation = -1.5708
+scale = Vector2(11.495, 1)
+
+[node name="wall_R" parent="Platforms" instance=ExtResource("1_twqca")]
+position = Vector2(675, 60)
+rotation = -1.5708
+scale = Vector2(11.495, 1)
+
+[node name="main_plat" parent="Platforms" instance=ExtResource("1_twqca")]
+position = Vector2(0, 184)
+scale = Vector2(3.64, 0.525)
+
+[node name="oneWayPlat" parent="Platforms" instance=ExtResource("3_akl7p")]
+position = Vector2(-429, 110)
+scale = Vector2(1.31, 0.145)
+
+[node name="oneWayPlat5" parent="Platforms" instance=ExtResource("3_akl7p")]
+position = Vector2(-215, -88)
+scale = Vector2(1.31, 0.145)
+
+[node name="oneWayPlat6" parent="Platforms" instance=ExtResource("3_akl7p")]
+position = Vector2(215, -88)
+scale = Vector2(1.31, 0.145)
+
+[node name="oneWayPlat3" parent="Platforms" instance=ExtResource("3_akl7p")]
+position = Vector2(-579, -5)
+scale = Vector2(2.41, 0.145)
+
+[node name="oneWayPlat4" parent="Platforms" instance=ExtResource("3_akl7p")]
+position = Vector2(579, -5)
+scale = Vector2(2.41, 0.145)
+
+[node name="oneWayPlat2" parent="Platforms" instance=ExtResource("3_akl7p")]
+position = Vector2(429, 110)
+scale = Vector2(1.31, 0.145)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("2_ytdf1")]
-position = Vector2(28, 203)
+[node name="P1" parent="." instance=ExtResource("2_ytdf1")]
+position = Vector2(-116, 94)
+
+[node name="P2" parent="." instance=ExtResource("2_ytdf1")]
+position = Vector2(115, 94)
+player_num = 1
