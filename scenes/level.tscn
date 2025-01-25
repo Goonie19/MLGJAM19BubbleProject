@@ -10,7 +10,7 @@
 scale = Vector2(1.505, 1.505)
 
 [node name="floor" parent="Platforms" instance=ExtResource("1_twqca")]
-position = Vector2(0, 368)
+position = Vector2(0, 362.791)
 scale = Vector2(11.495, 1)
 
 [node name="wall_L" parent="Platforms" instance=ExtResource("1_twqca")]
