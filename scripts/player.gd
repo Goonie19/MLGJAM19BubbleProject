@@ -17,6 +17,8 @@ var canJump: bool = false
 func _process(delta):
 	doCoyoteTime()
 	jumpBuffer(delta)
+	if Input.is_action_just_released("jump_" + str(player_num)) and velocity.y < 0:
+		velocity.y /= 4
 	
 func _physics_process(delta: float) -> void:	
 	applyJumpGravity(delta)

@@ -7,6 +7,7 @@
 [node name="Level" type="Node2D"]
 
 [node name="Platforms" type="Node2D" parent="."]
+scale = Vector2(1.505, 1.505)
 
 [node name="floor" parent="Platforms" instance=ExtResource("1_twqca")]
 position = Vector2(0, 368)
@@ -23,11 +24,15 @@ rotation = -1.5708
 scale = Vector2(11.495, 1)
 
 [node name="main_plat" parent="Platforms" instance=ExtResource("1_twqca")]
-position = Vector2(0, 184)
-scale = Vector2(3.64, 0.525)
+position = Vector2(0, 209.302)
+scale = Vector2(3.64, 0.385)
 
 [node name="oneWayPlat" parent="Platforms" instance=ExtResource("3_akl7p")]
-position = Vector2(-429, 110)
+position = Vector2(-429, 121)
+scale = Vector2(1.31, 0.145)
+
+[node name="oneWayPlat2" parent="Platforms" instance=ExtResource("3_akl7p")]
+position = Vector2(429, 121)
 scale = Vector2(1.31, 0.145)
 
 [node name="oneWayPlat5" parent="Platforms" instance=ExtResource("3_akl7p")]
@@ -46,15 +51,11 @@ scale = Vector2(2.41, 0.145)
 position = Vector2(579, -5)
 scale = Vector2(2.41, 0.145)
 
-[node name="oneWayPlat2" parent="Platforms" instance=ExtResource("3_akl7p")]
-position = Vector2(429, 110)
-scale = Vector2(1.31, 0.145)
-
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="P1" parent="." instance=ExtResource("2_ytdf1")]
-position = Vector2(-116, 94)
+position = Vector2(-116, 165)
 
 [node name="P2" parent="." instance=ExtResource("2_ytdf1")]
-position = Vector2(115, 94)
+position = Vector2(115, 165)
 player_num = 1
