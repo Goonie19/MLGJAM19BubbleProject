@@ -1,8 +1,8 @@
-[gd_scene load_steps=32 format=3 uid="uid://bisonmpnq7akr"]
+[gd_scene load_steps=32 format=3 uid="uid://dctlctwod7ltq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ir2nu"]
 [ext_resource type="Texture2D" uid="uid://nwngo347nvjt" path="res://sprites/pom_idle.png" id="2_b1tuo"]
-[ext_resource type="PackedScene" uid="uid://rf58tw3ojugc" path="res://scenes/spike.tscn" id="3_awrxj"]
+[ext_resource type="PackedScene" path="res://scenes/spike.tscn" id="3_awrxj"]
 [ext_resource type="Texture2D" uid="uid://fd8e55tggvlr" path="res://sprites/pom_run.png" id="3_mxyxa"]
 [ext_resource type="Script" path="res://scripts/action.gd" id="4_l0yxl"]
 [ext_resource type="Texture2D" uid="uid://ds6wpkpib7qoe" path="res://sprites/pom_attack.png" id="5_fxlw3"]
