@@ -1,6 +1,6 @@
 extends Area2D
 
-signal on_victory_achieved
+@export var player : Player
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,4 +13,4 @@ func _process(delta):
 
 
 func _on_area_entered(area):
-	on_victory_achieved.emit()
+	player.explodeBubble()

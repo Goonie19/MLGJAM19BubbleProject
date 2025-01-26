@@ -240,9 +240,9 @@ script = ExtResource("1_ir2nu")
 speed = 550.0
 jump_velocity = -1800.0
 jumpBufferTime = 0.015
-actionCDTime = 0.5
 animated_sprite = NodePath("Body_CollisionShape2D/AnimatedSprite2D")
 action = NodePath("Body_CollisionShape2D/Attack")
+actionCDTime = 0.5
 
 [node name="Body_CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 35.5)
@@ -254,16 +254,18 @@ script = ExtResource("4_l0yxl")
 pom_animation = NodePath("../AnimatedSprite2D")
 actionAnimation = "attack"
 
-[node name="Spike(attack)" parent="Body_CollisionShape2D/Attack" instance=ExtResource("3_awrxj")]
+[node name="Spike(attack)" parent="Body_CollisionShape2D/Attack" node_paths=PackedStringArray("player") instance=ExtResource("3_awrxj")]
 position = Vector2(62, -12)
+player = NodePath("../../..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body_CollisionShape2D/Attack/Spike(attack)"]
 position = Vector2(4.25, 2)
 shape = SubResource("RectangleShape2D_hmejk")
 debug_color = Color(0.853565, 0, 0.1253, 0.42)
 
-[node name="Spike(hat)" parent="Body_CollisionShape2D" instance=ExtResource("3_awrxj")]
+[node name="Spike(hat)" parent="Body_CollisionShape2D" node_paths=PackedStringArray("player") instance=ExtResource("3_awrxj")]
 position = Vector2(-17.5, -97.5)
+player = NodePath("../..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body_CollisionShape2D/Spike(hat)"]
 position = Vector2(4, 17)

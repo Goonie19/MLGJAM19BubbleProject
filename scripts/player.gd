@@ -142,3 +142,7 @@ func checkGround():
 
 func togleMovement(active: bool):
 	canMove = active
+	
+func explodeBubble():
+	game_controller.pom_win_round()
+	#Animar explosion burbuja
