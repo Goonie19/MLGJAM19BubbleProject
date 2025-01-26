@@ -23,6 +23,7 @@ var doingAction: bool = false
 var animateJump: bool = false
 var grounded: bool = false
 var actionCD: float = 0
+var canMove: bool = true
 
 func _process(delta):
 	doCoyoteTime()
@@ -83,9 +84,10 @@ func slowJump():
 		velocity.y /= 6
 
 func doJump():
-	velocity.y = jump_velocity
 	canJump = false
-	animateJump = true
+	if canMove:
+		velocity.y = jump_velocity
+		animateJump = true
 
 func move_player():
 	# Get the input direction and handle the movement/deceleration.
@@ -93,14 +95,15 @@ func move_player():
 	var direction := Input.get_axis("move_left_" + str(player_num), "move_right_" + str(player_num))
 	
 	#flip to direction
-	if direction > 0:
-		#animated_sprite.flip_h = false
-		body_collision_shape_2d.scale.x = abs(body_collision_shape_2d.scale.x)
-	elif direction < 0:
-		#animated_sprite.flip_h = true
-		body_collision_shape_2d.scale.x = abs(body_collision_shape_2d.scale.x) * -1
+	if canMove:
+		if direction > 0:
+			#animated_sprite.flip_h = false
+			body_collision_shape_2d.scale.x = abs(body_collision_shape_2d.scale.x)
+		elif direction < 0:
+			#animated_sprite.flip_h = true
+			body_collision_shape_2d.scale.x = abs(body_collision_shape_2d.scale.x) * -1
 		
-	if direction:
+	if direction and canMove:
 		velocity.x = direction * speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)	
@@ -116,12 +119,13 @@ func playAnims():
 			else:
 				animated_sprite.play("jump_peak")
 		else:
-			if direction:
+			if direction and canMove:
 				animated_sprite.play("run")
 			else:
 				animated_sprite.play("idle")
 
 func finish_action():
+	print_debug("TERMINO ACTION")
 	doingAction = false
 	
 func checkGround():
@@ -130,3 +134,6 @@ func checkGround():
 		animateJump = false
 	
 	grounded = is_on_floor()
+
+func togleMovement(active: bool):
+	canMove = active
