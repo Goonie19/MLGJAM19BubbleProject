@@ -8,6 +8,8 @@ extends CharacterBody2D
 @export var jumpBufferTime: float = 1
 @export var coyoteTime: float = 0.05
 @export var animated_sprite: AnimatedSprite2D
+@export var action: Action
+@export var actionCDTime: float
 
 @onready var body_collision_shape_2d = $Body_CollisionShape2D
 @onready var coyote_timer = $CoyoteTimer
@@ -15,13 +17,19 @@ extends CharacterBody2D
 var jumpTimeRemaining: float = 0
 var onCoyoteTime: bool = false
 var canJump: bool = false
+var doingAction: bool = false
+var animateJump: bool = false
+var grounded: bool = false
+var actionCD: float = 0
 
 func _process(delta):
 	doCoyoteTime()
 	jumpBuffer(delta)
-	if Input.is_action_just_released("jump_" + str(player_num)) and velocity.y < 0:
-		velocity.y /= 6
-	
+	checkAction(delta)
+	slowJump()
+	playAnims()
+	checkGround()
+
 func _physics_process(delta: float) -> void:	
 	applyJumpGravity(delta)
 	move_player()
@@ -60,9 +68,22 @@ func jumpBuffer(delta: float):
 			jumpTimeRemaining = 0
 		jumpTimeRemaining -= delta
 		
+func checkAction(delta: float):
+	if Input.is_action_just_pressed("action_" + str(player_num)) and actionCD <= 0:
+		doingAction = true
+		actionCD = actionCDTime
+		action.doAction()
+	
+	actionCD -= delta
+
+func slowJump():
+	if Input.is_action_just_released("jump_" + str(player_num)) and velocity.y < 0:
+		velocity.y /= 6
+
 func doJump():
 	velocity.y = jump_velocity
 	canJump = false
+	animateJump = true
 
 func move_player():
 	# Get the input direction and handle the movement/deceleration.
@@ -79,7 +100,31 @@ func move_player():
 		
 	if direction:
 		velocity.x = direction * speed
-		animated_sprite.play("run")
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)	
-		animated_sprite.play("idle")
+
+func playAnims():
+	var direction := Input.get_axis("move_left_" + str(player_num), "move_right_" + str(player_num))
+	
+	if !doingAction:
+		if !is_on_floor():
+			if animateJump:
+				animateJump = false
+				animated_sprite.play("jump")
+			else:
+				animated_sprite.play("jump_peak")
+		else:
+			if direction:
+				animated_sprite.play("run")
+			else:
+				animated_sprite.play("idle")
+
+func finish_action():
+	doingAction = false
+	
+func checkGround():
+	if is_on_floor() and !grounded:
+		#Acaba de aterrizar
+		animateJump = false
+	
+	grounded = is_on_floor()

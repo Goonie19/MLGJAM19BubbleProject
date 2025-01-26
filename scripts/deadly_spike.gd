@@ -12,4 +12,5 @@ func _process(delta):
 
 
 func _on_area_entered(area):
-	print_debug("pinchao")
+	pass
+	#print_debug("pinchao")

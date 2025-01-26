@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dvmju2615f3sg"]
+[gd_scene load_steps=6 format=3 uid="uid://dvmju2615f3sg"]
 
 [ext_resource type="PackedScene" uid="uid://cccxpsrjy50fn" path="res://scenes/platform.tscn" id="1_twqca"]
 [ext_resource type="PackedScene" uid="uid://bisonmpnq7akr" path="res://scenes/player_Pom(spiky).tscn" id="2_ytdf1"]
-[ext_resource type="PackedScene" uid="uid://ce4s2fdhfacir" path="res://scenes/player_Pa(bubble).tscn" id="3_ai6rw"]
 [ext_resource type="PackedScene" uid="uid://cyqv1p6v6hx61" path="res://scenes/oneWayPlatform.tscn" id="3_akl7p"]
 [ext_resource type="Texture2D" uid="uid://cl5bdjkvbsmib" path="res://sprites/refe buena.png" id="5_3to57"]
 
@@ -60,10 +59,6 @@ scale = Vector2(2.41, 0.145)
 
 [node name="Pom" parent="." instance=ExtResource("2_ytdf1")]
 position = Vector2(-283, 148)
-
-[node name="Pa" parent="." instance=ExtResource("3_ai6rw")]
-position = Vector2(208, 162)
-player_num = 1
 
 [node name="RefeBuena" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.141176)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ds6wpkpib7qoe"
-path="res://.godot/imported/pom_attack.png-844a7411eb176a65359de905a6e33eb0.ctex"
+uid="uid://dsr2wsxerdb54"
+path="res://.godot/imported/pom_jump.png-cce309e9cb8c9ab0f6b5b2b0cb3dd2a4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/pom_attack.png"
-dest_files=["res://.godot/imported/pom_attack.png-844a7411eb176a65359de905a6e33eb0.ctex"]
+source_file="res://sprites/pom_jump.png"
+dest_files=["res://.godot/imported/pom_jump.png-cce309e9cb8c9ab0f6b5b2b0cb3dd2a4.ctex"]
 
 [params]
 
