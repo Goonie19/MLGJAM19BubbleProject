@@ -1,7 +1,27 @@
-[gd_scene load_steps=10 format=3 uid="uid://brk0snem3ladu"]
+[gd_scene load_steps=22 format=3 uid="uid://brk0snem3ladu"]
 
 [ext_resource type="Script" path="res://scripts/game_ui.gd" id="1_3e12y"]
+[ext_resource type="Texture2D" uid="uid://kg7ssas0utgu" path="res://sprites/levelSprites/marco derecho.png" id="2_o6m8d"]
 [ext_resource type="LabelSettings" uid="uid://dk5xl3ggjl28w" path="res://UI Settings/player_message_settings.tres" id="2_sqgnb"]
+[ext_resource type="Texture2D" uid="uid://i36x5n3giti5" path="res://sprites/levelSprites/perfil gnomito.png" id="3_1pxdl"]
+[ext_resource type="Texture2D" uid="uid://5dw0qadrtw44" path="res://sprites/levelSprites/marco izquierdo.png" id="3_hlqc6"]
+[ext_resource type="Texture2D" uid="uid://4jciqs70vxip" path="res://sprites/levelSprites/pompa gris.png" id="4_8cdh3"]
+[ext_resource type="Texture2D" uid="uid://ca0k40buppftk" path="res://sprites/levelSprites/pompa roja.png" id="4_dfllv"]
+[ext_resource type="Texture2D" uid="uid://dijgc4ac5q3gv" path="res://sprites/levelSprites/timer.png" id="4_h62sv"]
+[ext_resource type="Texture2D" uid="uid://w5tsecqtyr1s" path="res://sprites/levelSprites/pompa azul.png" id="5_58wos"]
+[ext_resource type="Texture2D" uid="uid://dfah83wxskm7j" path="res://sprites/levelSprites/flechita jugador rojo.png" id="6_rni1s"]
+[ext_resource type="Texture2D" uid="uid://boxitrn0ohdan" path="res://sprites/levelSprites/perfil burbuja.png" id="7_ggxlt"]
+[ext_resource type="Texture2D" uid="uid://bduaimrjn50r4" path="res://sprites/levelSprites/flechita jugador azul.png" id="9_5gp2g"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ahqav"]
+font_size = 42
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bjebn"]
+font_size = 39
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ikgm2"]
 font_size = 140
@@ -548,7 +568,7 @@ _data = {
 "initial_state_menu": SubResource("Animation_intba")
 }
 
-[node name="GameUI" type="Control" node_paths=PackedStringArray("countdown_text", "player_1_start_text", "player_2_start_text", "player_victory_text", "anim_player")]
+[node name="GameUI" type="Control" node_paths=PackedStringArray("countdown_text", "player_1_start_text", "player_2_start_text", "player_victory_text", "anim_player", "timer_text", "player_1_Pfp", "player_2_Pfp")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -563,6 +583,187 @@ player_1_start_text = NodePath("main_moment_texts/player_1_text_label")
 player_2_start_text = NodePath("main_moment_texts/player_2_text_label")
 player_victory_text = NodePath("end_round_texts/Finish_Round_text")
 anim_player = NodePath("AnimationPlayer")
+timer_text = NodePath("HUD/Timer_panel/timer")
+player_1_Pfp = NodePath("HUD/Marco_izquierdo/PFP")
+player_2_Pfp = NodePath("HUD/Marco_derecho/PFP")
+
+[node name="HUD" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Marco_derecho" type="TextureRect" parent="HUD"]
+layout_mode = 0
+offset_left = 649.0
+offset_top = -543.0
+offset_right = 905.0
+offset_bottom = -287.0
+texture = ExtResource("2_o6m8d")
+
+[node name="PFP" type="TextureRect" parent="HUD/Marco_derecho"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_1pxdl")
+
+[node name="GreyBubble" type="TextureRect" parent="HUD/Marco_derecho"]
+offset_left = -156.0
+offset_top = 43.0
+offset_right = 100.0
+offset_bottom = 299.0
+texture = ExtResource("4_8cdh3")
+
+[node name="ColorBubble" type="TextureRect" parent="HUD/Marco_derecho/GreyBubble"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_dfllv")
+
+[node name="GreyBubble2" type="TextureRect" parent="HUD/Marco_derecho"]
+offset_left = -242.0
+offset_top = 43.0
+offset_right = 14.0
+offset_bottom = 299.0
+texture = ExtResource("4_8cdh3")
+
+[node name="ColorBubble" type="TextureRect" parent="HUD/Marco_derecho/GreyBubble2"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_dfllv")
+
+[node name="GreyBubble3" type="TextureRect" parent="HUD/Marco_derecho"]
+offset_left = -327.0
+offset_top = 43.0
+offset_right = -71.0
+offset_bottom = 299.0
+texture = ExtResource("4_8cdh3")
+
+[node name="ColorBubble" type="TextureRect" parent="HUD/Marco_derecho/GreyBubble3"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_dfllv")
+
+[node name="Player_2_label" type="Label" parent="HUD/Marco_derecho"]
+offset_left = -52.0
+offset_top = 69.0
+offset_right = -2.0
+offset_bottom = 127.0
+text = "P2"
+label_settings = SubResource("LabelSettings_ahqav")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Flecha_player" type="TextureRect" parent="HUD/Marco_derecho"]
+offset_left = -222.0
+offset_top = -28.0
+offset_right = 34.0
+offset_bottom = 228.0
+texture = ExtResource("6_rni1s")
+
+[node name="Marco_izquierdo" type="TextureRect" parent="HUD"]
+layout_mode = 0
+offset_left = -959.0
+offset_top = -543.0
+offset_right = -703.0
+offset_bottom = -287.0
+texture = ExtResource("3_hlqc6")
+
+[node name="PFP" type="TextureRect" parent="HUD/Marco_izquierdo"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_ggxlt")
+
+[node name="GreyBubble" type="TextureRect" parent="HUD/Marco_izquierdo"]
+layout_mode = 0
+offset_left = 156.0
+offset_top = 43.0
+offset_right = 412.0
+offset_bottom = 299.0
+texture = ExtResource("4_8cdh3")
+
+[node name="ColorBubble" type="TextureRect" parent="HUD/Marco_izquierdo/GreyBubble"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_58wos")
+
+[node name="GreyBubble2" type="TextureRect" parent="HUD/Marco_izquierdo"]
+offset_left = 242.0
+offset_top = 43.0
+offset_right = 498.0
+offset_bottom = 299.0
+texture = ExtResource("4_8cdh3")
+
+[node name="ColorBubble" type="TextureRect" parent="HUD/Marco_izquierdo/GreyBubble2"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_58wos")
+
+[node name="GreyBubble3" type="TextureRect" parent="HUD/Marco_izquierdo"]
+offset_left = 327.0
+offset_top = 43.0
+offset_right = 583.0
+offset_bottom = 299.0
+texture = ExtResource("4_8cdh3")
+
+[node name="ColorBubble" type="TextureRect" parent="HUD/Marco_izquierdo/GreyBubble3"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_58wos")
+
+[node name="Flecha_player" type="TextureRect" parent="HUD/Marco_izquierdo"]
+layout_mode = 0
+offset_left = 221.0
+offset_top = -28.0
+offset_right = 477.0
+offset_bottom = 228.0
+texture = ExtResource("9_5gp2g")
+
+[node name="Player_1_label" type="Label" parent="HUD/Marco_izquierdo"]
+layout_mode = 0
+offset_left = 258.0
+offset_top = 69.0
+offset_right = 308.0
+offset_bottom = 127.0
+text = "P1"
+label_settings = SubResource("LabelSettings_ahqav")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer_panel" type="TextureRect" parent="HUD"]
+layout_mode = 0
+offset_left = -256.0
+offset_top = -543.0
+offset_right = 256.0
+offset_bottom = -287.0
+texture = ExtResource("4_h62sv")
+
+[node name="Timer_label" type="Label" parent="HUD/Timer_panel"]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 74.0
+offset_right = 325.0
+offset_bottom = 128.0
+text = "Tiempo"
+label_settings = SubResource("LabelSettings_bjebn")
+
+[node name="timer" type="Label" parent="HUD/Timer_panel"]
+layout_mode = 0
+offset_left = 182.0
+offset_top = 135.0
+offset_right = 323.0
+offset_bottom = 189.0
+text = "15"
+label_settings = SubResource("LabelSettings_bjebn")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="end_round_texts" type="Control" parent="."]
 visible = false
