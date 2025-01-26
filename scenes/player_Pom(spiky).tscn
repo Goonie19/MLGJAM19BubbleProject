@@ -1,8 +1,8 @@
-[gd_scene load_steps=32 format=3 uid="uid://dctlctwod7ltq"]
+[gd_scene load_steps=32 format=3 uid="uid://bisonmpnq7akr"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ir2nu"]
 [ext_resource type="Texture2D" uid="uid://nwngo347nvjt" path="res://sprites/pom_idle.png" id="2_b1tuo"]
-[ext_resource type="PackedScene" path="res://scenes/spike.tscn" id="3_awrxj"]
+[ext_resource type="PackedScene" uid="uid://rf58tw3ojugc" path="res://scenes/spike.tscn" id="3_awrxj"]
 [ext_resource type="Texture2D" uid="uid://fd8e55tggvlr" path="res://sprites/pom_run.png" id="3_mxyxa"]
 [ext_resource type="Script" path="res://scripts/action.gd" id="4_l0yxl"]
 [ext_resource type="Texture2D" uid="uid://ds6wpkpib7qoe" path="res://sprites/pom_attack.png" id="5_fxlw3"]
@@ -197,10 +197,10 @@ tracks/0/path = NodePath("Body_CollisionShape2D/Attack/Spike(attack):visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, false]
+"values": [false]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -218,15 +218,15 @@ tracks/1/keys = {
 }
 tracks/2/type = "value"
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/path = NodePath("Body_CollisionShape2D/Spike(hat):visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false, true]
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gjmil"]
