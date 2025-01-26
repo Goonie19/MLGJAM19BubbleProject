@@ -72,6 +72,7 @@ shape = SubResource("RectangleShape2D_q3ofn")
 [node name="Platforms" type="Node2D" parent="."]
 
 [node name="Plat_L" type="Sprite2D" parent="Platforms"]
+z_index = 4
 position = Vector2(-661, 76)
 texture = ExtResource("3_nxtt3")
 
@@ -84,6 +85,7 @@ one_way_collision = true
 one_way_collision_margin = 10.0
 
 [node name="Plat_R" type="Sprite2D" parent="Platforms"]
+z_index = 4
 position = Vector2(734, 76)
 texture = ExtResource("4_x8ygt")
 
@@ -97,6 +99,7 @@ one_way_collision = true
 one_way_collision_margin = 10.0
 
 [node name="Plat_s_LD" type="Sprite2D" parent="Platforms"]
+z_index = 4
 position = Vector2(-625, 336)
 texture = ExtResource("5_bvb6m")
 
@@ -109,6 +112,7 @@ one_way_collision = true
 one_way_collision_margin = 10.0
 
 [node name="Plat_s_UL" type="Sprite2D" parent="Platforms"]
+z_index = 4
 position = Vector2(-218, -119)
 texture = ExtResource("6_mmrqv")
 
@@ -121,6 +125,7 @@ one_way_collision = true
 one_way_collision_margin = 10.0
 
 [node name="Plat_s_UR" type="Sprite2D" parent="Platforms"]
+z_index = 4
 position = Vector2(298, -124)
 texture = ExtResource("7_sa0pn")
 
@@ -133,6 +138,7 @@ one_way_collision = true
 one_way_collision_margin = 10.0
 
 [node name="Plat_s_RD" type="Sprite2D" parent="Platforms"]
+z_index = 4
 position = Vector2(661, 322)
 texture = ExtResource("8_4impu")
 
@@ -145,6 +151,7 @@ one_way_collision = true
 one_way_collision_margin = 10.0
 
 [node name="MainPlat" type="Sprite2D" parent="Platforms"]
+z_index = 4
 position = Vector2(0, 251)
 texture = ExtResource("9_tlmk2")
 

@@ -345,7 +345,7 @@ position = Vector2(4, -47.75)
 sprite_frames = SubResource("SpriteFrames_qk4at")
 animation = &"win"
 autoplay = "idle"
-frame_progress = 0.0719901
+frame_progress = 0.806526
 
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.07
