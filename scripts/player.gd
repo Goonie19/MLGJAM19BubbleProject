@@ -25,6 +25,7 @@ var grounded: bool = false
 var actionCD: float = 0
 var canMove: bool = true
 var game_controller : GameController
+var onFinalState : bool = false
 
 func set_game_controller(game_control):
 	game_controller = game_control
@@ -144,5 +145,11 @@ func togleMovement(active: bool):
 	canMove = active
 	
 func explodeBubble():
-	game_controller.pom_win_round()
+	game_controller.pom_win_rdound()
 	#Animar explosion burbuja
+	
+func playWin():
+	animated_sprite.play("win")	
+	
+func playDefeat():
+	animated_sprite.play("defeat")
