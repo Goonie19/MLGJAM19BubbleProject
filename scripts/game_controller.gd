@@ -101,6 +101,14 @@ func restart_round():
 	timer.timeout.disconnect(restart_round)
 	pom.onFinalState = false
 	pa.onFinalState = false
+	var player = pom.player_num
+	if player == 0:
+		pom.player_num = 1
+		pa.player_num = 0
+	else:
+		pom.player_num = 0
+		pa.player_num = 1
+	
 	set_players_pos()
 	start_countdown()
 
