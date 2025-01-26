@@ -1,21 +1,29 @@
-[gd_scene load_steps=6 format=3 uid="uid://bt1jemy3r6h28"]
+[gd_scene load_steps=13 format=3 uid="uid://bt1jemy3r6h28"]
 
 [ext_resource type="Script" path="res://scripts/game_controller.gd" id="1_dovxb"]
 [ext_resource type="PackedScene" uid="uid://brk0snem3ladu" path="res://scenes/UI/GameUI.tscn" id="2_mp774"]
+[ext_resource type="AudioStream" uid="uid://ctnc2ut502ofi" path="res://Audio/Música/Ronda1.mp3" id="3_68gju"]
 [ext_resource type="PackedScene" uid="uid://dvmju2615f3sg" path="res://scenes/level.tscn" id="3_ge0t1"]
 [ext_resource type="PackedScene" uid="uid://dctlctwod7ltq" path="res://scenes/player_Pom(spiky).tscn" id="3_nk3ad"]
+[ext_resource type="AudioStream" uid="uid://d2qb5iivk7khr" path="res://Audio/Música/Inicio.mp3" id="3_yditc"]
+[ext_resource type="AudioStream" uid="uid://c5stiq3nyj0xf" path="res://Audio/Música/Ronda2.mp3" id="4_6yp80"]
 [ext_resource type="PackedScene" uid="uid://dyf04uveuy1pd" path="res://scenes/player_Pa(bubble).tscn" id="4_xepoi"]
+[ext_resource type="AudioStream" uid="uid://bdt12bqjsseuh" path="res://Audio/Música/Ronda3.mp3" id="5_w1ms1"]
+[ext_resource type="AudioStream" uid="uid://of625gtffyxx" path="res://Audio/Música/Ronda4.mp3" id="6_fiyjs"]
+[ext_resource type="AudioStream" uid="uid://jh2ei5uqu2ok" path="res://Audio/Música/Ronda5.mp3" id="7_6wape"]
+[ext_resource type="Script" path="res://scripts/music_controller.gd" id="12_nc8ny"]
 
-[node name="GameScene" type="Node2D" node_paths=PackedStringArray("timer", "pom", "player_1_pos", "pa", "player_2_pos")]
+[node name="GameScene" type="Node2D" node_paths=PackedStringArray("timer", "pom", "player_1_pos", "pa", "player_2_pos", "music_player")]
 script = ExtResource("1_dovxb")
-pom_start_string = "¡Destruye esa burbuja!"
-pa_start_string = "¡Corre por tu vida!"
 timer = NodePath("Timer")
 pom = NodePath("Pom")
 player_1_pos = NodePath("Player_1_init_position")
 pa = NodePath("Pa")
 player_2_pos = NodePath("Player_2_init_position")
 game_scene_ui = ExtResource("2_mp774")
+music_player = NodePath("AudioStreamPlayer2D")
+menu_music = ExtResource("3_yditc")
+round_music_array = Array[AudioStream]([ExtResource("3_68gju"), ExtResource("4_6yp80"), ExtResource("5_w1ms1"), ExtResource("6_fiyjs"), ExtResource("7_6wape")])
 
 [node name="Level" parent="." instance=ExtResource("3_ge0t1")]
 
@@ -34,3 +42,7 @@ actionCDTime = 0.0
 player_num = 1
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = 2.0
+script = ExtResource("12_nc8ny")

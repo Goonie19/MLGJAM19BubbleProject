@@ -568,7 +568,8 @@ _data = {
 "initial_state_menu": SubResource("Animation_intba")
 }
 
-[node name="GameUI" type="Control" node_paths=PackedStringArray("countdown_text", "player_1_start_text", "player_2_start_text", "player_victory_text", "anim_player", "timer_text", "player_1_Pfp", "player_2_Pfp")]
+[node name="GameUI" type="Control" node_paths=PackedStringArray("countdown_text", "player_1_start_text", "player_2_start_text", "player_victory_text", "anim_player", "timer_text", "player_1_Pfp", "player_2_Pfp", "player_1_round_bubbles", "player_2_round_bubbles")]
+z_index = 35
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -586,6 +587,8 @@ anim_player = NodePath("AnimationPlayer")
 timer_text = NodePath("HUD/Timer_panel/timer")
 player_1_Pfp = NodePath("HUD/Marco_izquierdo/PFP")
 player_2_Pfp = NodePath("HUD/Marco_derecho/PFP")
+player_1_round_bubbles = [NodePath("HUD/Marco_izquierdo/GreyBubble/ColorBubble"), NodePath("HUD/Marco_izquierdo/GreyBubble2/ColorBubble"), NodePath("HUD/Marco_izquierdo/GreyBubble3/ColorBubble")]
+player_2_round_bubbles = [NodePath("HUD/Marco_derecho/GreyBubble/ColorBubble"), NodePath("HUD/Marco_derecho/GreyBubble2/ColorBubble"), NodePath("HUD/Marco_derecho/GreyBubble3/ColorBubble")]
 
 [node name="HUD" type="Control" parent="."]
 anchors_preset = 0
@@ -594,9 +597,9 @@ offset_bottom = 40.0
 
 [node name="Marco_derecho" type="TextureRect" parent="HUD"]
 layout_mode = 0
-offset_left = 649.0
+offset_left = 704.0
 offset_top = -543.0
-offset_right = 905.0
+offset_right = 960.0
 offset_bottom = -287.0
 texture = ExtResource("2_o6m8d")
 
@@ -607,6 +610,7 @@ offset_bottom = 40.0
 texture = ExtResource("3_1pxdl")
 
 [node name="GreyBubble" type="TextureRect" parent="HUD/Marco_derecho"]
+layout_mode = 0
 offset_left = -156.0
 offset_top = 43.0
 offset_right = 100.0
@@ -621,6 +625,7 @@ offset_bottom = 40.0
 texture = ExtResource("4_dfllv")
 
 [node name="GreyBubble2" type="TextureRect" parent="HUD/Marco_derecho"]
+layout_mode = 0
 offset_left = -242.0
 offset_top = 43.0
 offset_right = 14.0
@@ -629,11 +634,13 @@ texture = ExtResource("4_8cdh3")
 
 [node name="ColorBubble" type="TextureRect" parent="HUD/Marco_derecho/GreyBubble2"]
 visible = false
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("4_dfllv")
 
 [node name="GreyBubble3" type="TextureRect" parent="HUD/Marco_derecho"]
+layout_mode = 0
 offset_left = -327.0
 offset_top = 43.0
 offset_right = -71.0
@@ -642,11 +649,13 @@ texture = ExtResource("4_8cdh3")
 
 [node name="ColorBubble" type="TextureRect" parent="HUD/Marco_derecho/GreyBubble3"]
 visible = false
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("4_dfllv")
 
 [node name="Player_2_label" type="Label" parent="HUD/Marco_derecho"]
+layout_mode = 0
 offset_left = -52.0
 offset_top = 69.0
 offset_right = -2.0
@@ -657,6 +666,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Flecha_player" type="TextureRect" parent="HUD/Marco_derecho"]
+layout_mode = 0
 offset_left = -222.0
 offset_top = -28.0
 offset_right = 34.0
@@ -693,6 +703,7 @@ offset_bottom = 40.0
 texture = ExtResource("5_58wos")
 
 [node name="GreyBubble2" type="TextureRect" parent="HUD/Marco_izquierdo"]
+layout_mode = 0
 offset_left = 242.0
 offset_top = 43.0
 offset_right = 498.0
@@ -701,11 +712,13 @@ texture = ExtResource("4_8cdh3")
 
 [node name="ColorBubble" type="TextureRect" parent="HUD/Marco_izquierdo/GreyBubble2"]
 visible = false
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("5_58wos")
 
 [node name="GreyBubble3" type="TextureRect" parent="HUD/Marco_izquierdo"]
+layout_mode = 0
 offset_left = 327.0
 offset_top = 43.0
 offset_right = 583.0
@@ -714,6 +727,7 @@ texture = ExtResource("4_8cdh3")
 
 [node name="ColorBubble" type="TextureRect" parent="HUD/Marco_izquierdo/GreyBubble3"]
 visible = false
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("5_58wos")

@@ -13,6 +13,10 @@ class_name GameController
 
 @export var game_scene_ui : PackedScene
 
+@export var music_player: MusicController
+@export var menu_music : AudioStream
+@export var round_music_array : Array[AudioStream]
+
 enum game_state_enum {inital_state, in_game, finished_game}
 
 var current_state
@@ -24,6 +28,8 @@ var ready_player_2 = false
 var player_2_points = 0
 
 var game_ui: GameUI
+
+var current_round: int = 0
 
 var on_countdown = false
 
@@ -38,6 +44,9 @@ func _ready() -> void:
 	current_state = last_state
 	game_ui.on_round_completed.connect(check_ending)
 	game_ui.on_game_finished.connect(reload_game)
+	
+	music_player.stream = menu_music
+	music_player.play()
 	
 	set_players_pos()
 
@@ -94,13 +103,16 @@ func start_gameplay():
 	game_ui.on_timer_completed.disconnect(start_gameplay)
 	pom.togleMovement(true)
 	pa.togleMovement(true)
-	timer.wait_time = 15
+	music_player.stream = round_music_array[current_round]
+	music_player.play()
+	timer.wait_time = 10
 	timer.timeout.connect(pa_win_round)
 	timer.start()
 
 func end_current_round():
 	on_countdown = false
-
+	#music_player.stop_music()
+	current_round += 1
 	timer.wait_time = 2
 	timer.timeout.connect(restart_round)
 	timer.start()
@@ -126,8 +138,11 @@ func restart_round():
 
 func add_victory(player):
 	if player == 0:
+		game_ui.set_round_won(player, player_1_points)
 		player_1_points += 1
 	else:
+		game_ui.set_round_won(player, player_2_points)
+
 		player_2_points += 1
 	
 	
@@ -158,6 +173,7 @@ func pom_win_round():
 		
 	pom.playWin()
 	pa.playDefeat()
+	timer.timeout.disconnect(pa_win_round)
 	timer.stop()
 
 func pa_win_round():

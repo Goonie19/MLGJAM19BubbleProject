@@ -13,6 +13,9 @@ class_name GameUI
 @export var player_1_Pfp : TextureRect
 @export var player_2_Pfp : TextureRect
 
+@export var player_1_round_bubbles: Array[CanvasItem]
+@export var player_2_round_bubbles: Array[CanvasItem]
+
 var current_time
 var in_countdown
 
@@ -70,3 +73,16 @@ func set_player_1_pfp(texture):
 	
 func set_player_2_pfp(texture):
 	player_2_Pfp.texture = texture
+
+func set_round_won(player, round):
+	if player == 0:
+		player_1_round_bubbles[round].visible = true
+	else:
+		player_2_round_bubbles[round].visible = true
+
+func reset_rounds():
+	for i in player_1_round_bubbles:
+		player_1_round_bubbles[i].visible = false
+	
+	for j in player_2_round_bubbles:
+		player_2_round_bubbles[j].visible = false
