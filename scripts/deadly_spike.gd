@@ -1,5 +1,6 @@
 extends Area2D
 
+signal on_victory_achieved
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,5 +13,4 @@ func _process(delta):
 
 
 func _on_area_entered(area):
-	pass
-	#print_debug("pinchao")
+	on_victory_achieved.emit()

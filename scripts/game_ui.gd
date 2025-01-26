@@ -6,12 +6,14 @@ class_name GameUI
 @export var countdown_text : Label
 @export var player_1_start_text: Label
 @export var player_2_start_text: Label
+@export var player_victory_text: Label
 @export var anim_player:AnimationPlayer
 
 var current_time
 var in_countdown
 
 signal on_timer_completed
+signal on_round_completed
 
 func _ready() -> void:
 	on_timer_completed.connect(disable_in_countdown)
@@ -32,6 +34,19 @@ func update_player_texts(text_player_1, text_player_2):
 
 func emit_on_countdown_finished():
 	on_timer_completed.emit()
+	
+func play_ending_round():
+	anim_player.play("finish_round_anim")
+
+func emit_on_round_finished():
+	on_round_completed.emit()
 
 func disable_in_countdown():
 	in_countdown = false
+
+func set_player_victory_text(text):
+	player_victory_text.text = text
+
+func play_ending_anim():
+	anim_player.play("end_anim")
+	

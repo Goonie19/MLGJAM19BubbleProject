@@ -24,6 +24,10 @@ var animateJump: bool = false
 var grounded: bool = false
 var actionCD: float = 0
 var canMove: bool = true
+var game_controller : GameController
+
+func set_game_controller(game_control):
+	game_controller = game_control
 
 func _process(delta):
 	doCoyoteTime()

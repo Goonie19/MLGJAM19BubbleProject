@@ -1,12 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://bt1jemy3r6h28"]
+[gd_scene load_steps=5 format=3 uid="uid://bt1jemy3r6h28"]
 
 [ext_resource type="Script" path="res://scripts/game_controller.gd" id="1_dovxb"]
 [ext_resource type="PackedScene" uid="uid://brk0snem3ladu" path="res://scenes/UI/GameUI.tscn" id="2_mp774"]
+[ext_resource type="PackedScene" uid="uid://dctlctwod7ltq" path="res://scenes/player_Pom(spiky).tscn" id="3_nk3ad"]
+[ext_resource type="PackedScene" path="res://scenes/player_Pa(bubble).tscn" id="4_xepoi"]
 
-[node name="GameScene" type="Node2D"]
+[node name="GameScene" type="Node2D" node_paths=PackedStringArray("pom", "player_1_pos", "pa", "player_2_pos")]
 script = ExtResource("1_dovxb")
 pom_start_string = "¡Destruye esa burbuja!"
 pa_start_string = "¡Corre por tu vida!"
+pom = NodePath("Pom")
+player_1_pos = NodePath("Player_1_init_position")
+pa = NodePath("Pa")
+player_2_pos = NodePath("Player_2_init_position")
 game_scene_ui = ExtResource("2_mp774")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Player_1_init_position" type="Node2D" parent="."]
+position = Vector2(-373, 187)
+
+[node name="Player_2_init_position" type="Node2D" parent="."]
+position = Vector2(373, 187)
+
+[node name="Pom" parent="." instance=ExtResource("3_nk3ad")]
+
+[node name="Pa" parent="." instance=ExtResource("4_xepoi")]
+actionCDTime = 0.0
+
+[node name="Timer" type="Timer" parent="."]
