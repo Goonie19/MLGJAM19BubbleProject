@@ -28,6 +28,7 @@ var game_controller : GameController
 
 func set_game_controller(game_control):
 	game_controller = game_control
+	
 
 func _process(delta):
 	doCoyoteTime()

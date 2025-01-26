@@ -120,6 +120,12 @@ func check_ending():
 
 #endregion
 
+func pom_win_round():
+	if pom.player_num == 0:
+		win_player_1()
+	else:
+		win_player_2()
+
 func win_player_1():
 	game_ui.set_player_victory_text("Jugador 1 gana")
 	game_ui.play_ending_anim()
