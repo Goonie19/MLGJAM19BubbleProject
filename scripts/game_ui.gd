@@ -14,6 +14,7 @@ var in_countdown
 
 signal on_timer_completed
 signal on_round_completed
+signal on_game_finished
 
 func _ready() -> void:
 	on_timer_completed.connect(disable_in_countdown)
@@ -49,4 +50,10 @@ func set_player_victory_text(text):
 
 func play_ending_anim():
 	anim_player.play("end_anim")
+	
+func emit_round_completed():
+	on_round_completed.emit()
+	
+func emit_ending_completed():
+	on_game_finished.emit()
 	

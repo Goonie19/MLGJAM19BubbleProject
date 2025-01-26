@@ -22,7 +22,6 @@ var ready_player_1 = false
 var player_1_points = 0
 var ready_player_2 = false
 var player_2_points = 0
-var end_round = false
 
 var game_ui: GameUI
 
@@ -36,6 +35,7 @@ func _ready() -> void:
 	last_state = game_state_enum.inital_state
 	current_state = last_state
 	game_ui.on_round_completed.connect(check_ending)
+	game_ui.on_game_finished.connect(reload_game)
 	
 	set_players_pos()
 
@@ -88,19 +88,19 @@ func start_gameplay():
 	game_ui.on_timer_completed.disconnect(start_gameplay)
 	pom.togleMovement(true)
 	pa.togleMovement(true)
-	
 	timer.wait_time = 15
 	timer.timeout.connect(pa_win_round)
 	timer.start()
 
 func end_current_round():
-	end_round = true
 	timer.wait_time = 2
 	timer.timeout.connect(restart_round)
 	timer.start()
 	
 func restart_round():
 	timer.timeout.disconnect(restart_round)
+	pom.onFinalState = false
+	pa.onFinalState = false
 	set_players_pos()
 	start_countdown()
 
@@ -119,31 +119,56 @@ func play_victory_anim():
 func check_ending():
 	if player_1_points > 2:
 		win_player_1()
+		return
 	if player_2_points > 2:
 		win_player_2()
+		return
+	
+	end_current_round()
+		
+	
 
 #endregion
 
 func pom_win_round():
 	if pom.player_num == 0:
-		win_player_1()
+		win_player_1_round()
 	else:
-		win_player_2()
+		win_player_2_round()
 		
+	pom.playWin()
+	pa.playDefeat()
 	timer.stop()
 
 func pa_win_round():
 	if pa.player_num == 0:
-		win_player_1()
+		win_player_1_round()
 	else:
-		win_player_2()
+		win_player_2_round()
 		
+		
+	pom.playDefeat()
+	pa.playWin()
 	timer.timeout.disconnect(pa_win_round)
 
-func win_player_1():
-	game_ui.set_player_victory_text("Jugador 1 gana")
-	game_ui.play_ending_anim()
+func win_player_1_round():
+	game_ui.set_player_victory_text("Sacabó")
+	add_victory(0)
+	pom.togleMovement(false)
+	pa.togleMovement(false)
 	
-func win_player_2():
-	game_ui.set_player_victory_text("Jugador 2 gana")
+
+func win_player_1():
 	game_ui.play_ending_anim()
+
+func win_player_2_round():
+	game_ui.set_player_victory_text("Sacabó")
+	add_victory(1)
+	pom.togleMovement(false)
+	pa.togleMovement(false)
+
+func win_player_2():
+	game_ui.play_ending_anim()
+
+func reload_game():
+	get_tree().reload_current_scene()

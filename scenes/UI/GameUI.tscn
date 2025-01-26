@@ -303,11 +303,22 @@ tracks/9/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("end_round_texts:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_q3b5g"]
 resource_name = "end_anim"
-length = 2.0
-loop_mode = 1
+length = 8.0
 step = 0.3333
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -328,10 +339,10 @@ tracks/1/path = NodePath("Ending_texts:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 1, 2, 3.01056, 4.01056, 5.00528, 6.00528, 6.9723, 7.9723),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0.75, 0.75), Vector2(1, 1), Vector2(0.75, 0.75)]
+"values": [Vector2(0.75, 0.75), Vector2(1, 1), Vector2(0.75, 0.75), Vector2(1, 1), Vector2(0.75, 0.75), Vector2(1, 1), Vector2(0.75, 0.75), Vector2(1, 1), Vector2(0.75, 0.75)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -368,6 +379,20 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(7.99736),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"emit_ending_completed"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_oy2of"]

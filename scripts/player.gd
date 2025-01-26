@@ -12,6 +12,8 @@ class_name Player
 @export var animated_sprite: AnimatedSprite2D
 @export var action: Action
 @export var actionCDTime: float
+@export var attack_shape:CollisionShape2D
+
 
 @onready var body_collision_shape_2d = $Body_CollisionShape2D
 @onready var coyote_timer = $CoyoteTimer
@@ -78,8 +80,13 @@ func jumpBuffer(delta: float):
 		jumpTimeRemaining -= delta
 		
 func checkAction(delta: float):
+	if onFinalState:
+		return
+	
 	if Input.is_action_just_pressed("action_" + str(player_num)) and actionCD <= 0:
 		doingAction = true
+		#attack_shape.set_deferred("disabled", false)
+
 		actionCD = actionCDTime
 		action.doAction()
 	
@@ -115,6 +122,8 @@ func move_player():
 		velocity.x = move_toward(velocity.x, 0, speed)	
 
 func playAnims():
+	if onFinalState:
+		return
 	var direction := Input.get_axis("move_left_" + str(player_num), "move_right_" + str(player_num))
 	
 	if !doingAction:
@@ -132,6 +141,7 @@ func playAnims():
 
 func finish_action():
 	print_debug("TERMINO ACTION")
+	#attack_shape.set_deferred("disabled", false)
 	doingAction = false
 	
 func checkGround():
@@ -145,11 +155,13 @@ func togleMovement(active: bool):
 	canMove = active
 	
 func explodeBubble():
-	game_controller.pom_win_rdound()
+	game_controller.pom_win_round()
 	#Animar explosion burbuja
 	
 func playWin():
+	onFinalState = true
 	animated_sprite.play("win")	
 	
 func playDefeat():
+	onFinalState = true
 	animated_sprite.play("defeat")
