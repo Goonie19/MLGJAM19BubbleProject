@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bt1jemy3r6h28"]
+[gd_scene load_steps=6 format=3 uid="uid://bt1jemy3r6h28"]
 
 [ext_resource type="Script" path="res://scripts/game_controller.gd" id="1_dovxb"]
 [ext_resource type="PackedScene" uid="uid://brk0snem3ladu" path="res://scenes/UI/GameUI.tscn" id="2_mp774"]
+[ext_resource type="PackedScene" uid="uid://dvmju2615f3sg" path="res://scenes/level.tscn" id="3_ge0t1"]
 [ext_resource type="PackedScene" uid="uid://dctlctwod7ltq" path="res://scenes/player_Pom(spiky).tscn" id="3_nk3ad"]
 [ext_resource type="PackedScene" path="res://scenes/player_Pa(bubble).tscn" id="4_xepoi"]
 
@@ -18,14 +19,17 @@ game_scene_ui = ExtResource("2_mp774")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Player_1_init_position" type="Node2D" parent="."]
-position = Vector2(-373, 187)
+position = Vector2(-245, 158)
 
 [node name="Player_2_init_position" type="Node2D" parent="."]
-position = Vector2(373, 187)
+position = Vector2(245, 158)
 
 [node name="Pom" parent="." instance=ExtResource("3_nk3ad")]
 
 [node name="Pa" parent="." instance=ExtResource("4_xepoi")]
+player_num = 1
 actionCDTime = 0.0
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="Level" parent="." instance=ExtResource("3_ge0t1")]
