@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b5qg6d5nek68x"]
+[gd_scene load_steps=26 format=3 uid="uid://b5qg6d5nek68x"]
 
 [ext_resource type="Texture2D" uid="uid://bkogw7k4snunw" path="res://sprites/levelSprites/fondo fondo fondo fondo.png" id="1_qjoer"]
 [ext_resource type="Texture2D" uid="uid://dyfa5qcsmfupr" path="res://sprites/levelSprites/paredes.png" id="2_too10"]
@@ -42,6 +42,8 @@ size = Vector2(679, 70)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1fjcc"]
 size = Vector2(1967, 113.5)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mr1k2"]
 
 [node name="Level" type="Node2D"]
 
@@ -195,3 +197,6 @@ player_num = 1
 
 [node name="Pom" parent="." instance=ExtResource("15_c6a15")]
 position = Vector2(-103, 146)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_mr1k2")

@@ -1,9 +1,10 @@
-[gd_scene load_steps=44 format=3 uid="uid://ce4s2fdhfacir"]
+[gd_scene load_steps=47 format=3 uid="uid://ce4s2fdhfacir"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_41uuc"]
 [ext_resource type="Script" path="res://scripts/action.gd" id="2_px1fm"]
 [ext_resource type="Texture2D" uid="uid://b0gyb6m078o6r" path="res://sprites/pa_action.png" id="2_xyrxb"]
 [ext_resource type="Texture2D" uid="uid://bgn7vvh8b2iqb" path="res://sprites/pa_idle.png" id="2_ygq11"]
+[ext_resource type="Shader" uid="uid://dl74wllwbccbo" path="res://shaders/hit_flash.res" id="3_oogir"]
 [ext_resource type="Texture2D" uid="uid://h22lx5d16jag" path="res://sprites/pa_defeat.png" id="3_r08d7"]
 [ext_resource type="Texture2D" uid="uid://cp6ryxnkeo7o8" path="res://sprites/pa_jump.png" id="5_11iag"]
 [ext_resource type="Texture2D" uid="uid://hwrdwem74nc3" path="res://sprites/pa_run.png" id="6_gy3h8"]
@@ -14,6 +15,11 @@ size = Vector2(52.8333, 63.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wtdkh"]
 size = Vector2(84.6667, 81.6667)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kmcab"]
+shader = ExtResource("3_oogir")
+shader_parameter/enabled = false
+shader_parameter/Tint = Color(1, 1, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xwlms"]
 atlas = ExtResource("3_r08d7")
@@ -256,6 +262,33 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="Animation" id="Animation_7ktr7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body_CollisionShape2D/Defend/BubbleArea/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body_CollisionShape2D/AnimatedSprite2D:material:shader_parameter/enabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_gd6ln"]
 resource_name = "action"
 length = 0.666672
@@ -287,28 +320,31 @@ tracks/1/keys = {
 "values": [true, false]
 }
 
-[sub_resource type="Animation" id="Animation_7ktr7"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_tluy3"]
+resource_name = "defeat"
+length = 0.166668
+step = 0.0166667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Body_CollisionShape2D/Defend/BubbleArea/CollisionShape2D:disabled")
+tracks/0/path = NodePath("Body_CollisionShape2D/AnimatedSprite2D:material:shader_parameter/enabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false]
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sss8o"]
 _data = {
 "RESET": SubResource("Animation_7ktr7"),
+"defeat": SubResource("Animation_tluy3"),
 "defend": SubResource("Animation_gd6ln")
 }
 
-[node name="Pa" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite", "action")]
+[node name="Pa" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite", "action", "animator")]
 scale = Vector2(0.75, 0.75)
 script = ExtResource("1_41uuc")
 speed = 500.0
@@ -318,6 +354,7 @@ jumpBufferTime = 0.015
 animated_sprite = NodePath("Body_CollisionShape2D/AnimatedSprite2D")
 action = NodePath("Body_CollisionShape2D/Defend")
 actionCDTime = 0.8
+animator = NodePath("AnimationPlayer")
 
 [node name="Body_CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1
@@ -341,11 +378,11 @@ position = Vector2(0.333332, -1.83334)
 shape = SubResource("RectangleShape2D_wtdkh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Body_CollisionShape2D"]
+material = SubResource("ShaderMaterial_kmcab")
 position = Vector2(4, -47.75)
 sprite_frames = SubResource("SpriteFrames_qk4at")
-animation = &"win"
+animation = &"defeat"
 autoplay = "idle"
-frame_progress = 0.806526
 
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.07
