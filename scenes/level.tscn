@@ -1,7 +1,5 @@
-[gd_scene load_steps=25 format=3 uid="uid://dvmju2615f3sg"]
+[gd_scene load_steps=23 format=3 uid="uid://dvmju2615f3sg"]
 
-[ext_resource type="PackedScene" uid="uid://bisonmpnq7akr" path="res://scenes/player_Pom(spiky).tscn" id="2_ytdf1"]
-[ext_resource type="PackedScene" uid="uid://ce4s2fdhfacir" path="res://scenes/player_Pa(bubble).tscn" id="3_ai6rw"]
 [ext_resource type="Texture2D" uid="uid://bkogw7k4snunw" path="res://sprites/levelSprites/fondo fondo fondo fondo.png" id="3_mb1el"]
 [ext_resource type="Texture2D" uid="uid://dyfa5qcsmfupr" path="res://sprites/levelSprites/paredes.png" id="6_5ku5x"]
 [ext_resource type="Texture2D" uid="uid://c3wu685v2tw73" path="res://sprites/levelSprites/agua.png" id="8_asi7u"]
@@ -51,20 +49,6 @@ size = Vector2(1967, 113.5)
 visibility_layer = 4
 z_index = -5
 texture = ExtResource("3_mb1el")
-
-[node name="Pom" parent="." instance=ExtResource("2_ytdf1")]
-position = Vector2(-283, 148)
-player_num = null
-fallMod = null
-localGravityScale = null
-coyoteTime = null
-
-[node name="Pa" parent="." instance=ExtResource("3_ai6rw")]
-position = Vector2(175, 157)
-scale = Vector2(1, 1)
-player_num = 1
-localGravityScale = null
-coyoteTime = null
 
 [node name="Walls" type="Sprite2D" parent="."]
 z_index = 6

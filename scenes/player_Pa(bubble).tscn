@@ -208,10 +208,13 @@ _data = {
 [node name="Pa" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite", "action")]
 scale = Vector2(0.75, 0.75)
 script = ExtResource("1_41uuc")
+player_num = null
 speed = 500.0
 jump_velocity = -1700.0
 fallMod = 0.8
+localGravityScale = null
 jumpBufferTime = 0.015
+coyoteTime = null
 animated_sprite = NodePath("Body_CollisionShape2D/AnimatedSprite2D")
 action = NodePath("Body_CollisionShape2D/Defend")
 actionCDTime = 0.8
