@@ -88,6 +88,10 @@ func start_gameplay():
 	game_ui.on_timer_completed.disconnect(start_gameplay)
 	pom.togleMovement(true)
 	pa.togleMovement(true)
+	
+	timer.wait_time = 15
+	timer.timeout.connect(pa_win_round)
+	timer.start()
 
 func end_current_round():
 	end_round = true
@@ -125,6 +129,16 @@ func pom_win_round():
 		win_player_1()
 	else:
 		win_player_2()
+		
+	timer.stop()
+
+func pa_win_round():
+	if pa.player_num == 0:
+		win_player_1()
+	else:
+		win_player_2()
+		
+	timer.timeout.disconnect(pa_win_round)
 
 func win_player_1():
 	game_ui.set_player_victory_text("Jugador 1 gana")
