@@ -72,7 +72,7 @@ shape = SubResource("RectangleShape2D_q3ofn")
 [node name="Platforms" type="Node2D" parent="."]
 
 [node name="Plat_L" type="Sprite2D" parent="Platforms"]
-position = Vector2(-673, 6)
+position = Vector2(-661, 76)
 texture = ExtResource("3_nxtt3")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Platforms/Plat_L"]
@@ -84,7 +84,7 @@ one_way_collision = true
 one_way_collision_margin = 10.0
 
 [node name="Plat_R" type="Sprite2D" parent="Platforms"]
-position = Vector2(722, 6)
+position = Vector2(734, 76)
 texture = ExtResource("4_x8ygt")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Platforms/Plat_R"]
@@ -97,7 +97,7 @@ one_way_collision = true
 one_way_collision_margin = 10.0
 
 [node name="Plat_s_LD" type="Sprite2D" parent="Platforms"]
-position = Vector2(-625, 261)
+position = Vector2(-625, 336)
 texture = ExtResource("5_bvb6m")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Platforms/Plat_s_LD"]
@@ -109,7 +109,7 @@ one_way_collision = true
 one_way_collision_margin = 10.0
 
 [node name="Plat_s_UL" type="Sprite2D" parent="Platforms"]
-position = Vector2(-269, -155)
+position = Vector2(-218, -119)
 texture = ExtResource("6_mmrqv")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Platforms/Plat_s_UL"]
@@ -121,7 +121,7 @@ one_way_collision = true
 one_way_collision_margin = 10.0
 
 [node name="Plat_s_UR" type="Sprite2D" parent="Platforms"]
-position = Vector2(317, -160)
+position = Vector2(298, -124)
 texture = ExtResource("7_sa0pn")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Platforms/Plat_s_UR"]
@@ -133,7 +133,7 @@ one_way_collision = true
 one_way_collision_margin = 10.0
 
 [node name="Plat_s_RD" type="Sprite2D" parent="Platforms"]
-position = Vector2(631, 243)
+position = Vector2(661, 322)
 texture = ExtResource("8_4impu")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Platforms/Plat_s_RD"]
