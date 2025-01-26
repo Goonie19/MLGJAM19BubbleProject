@@ -1,6 +1,8 @@
 [gd_scene load_steps=47 format=3 uid="uid://ce4s2fdhfacir"]
+[gd_scene load_steps=45 format=3 uid="uid://dyf04uveuy1pd"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_41uuc"]
+[ext_resource type="Texture2D" uid="uid://boxitrn0ohdan" path="res://sprites/levelSprites/perfil burbuja.png" id="2_ilpk7"]
 [ext_resource type="Script" path="res://scripts/action.gd" id="2_px1fm"]
 [ext_resource type="Texture2D" uid="uid://b0gyb6m078o6r" path="res://sprites/pa_action.png" id="2_xyrxb"]
 [ext_resource type="Texture2D" uid="uid://bgn7vvh8b2iqb" path="res://sprites/pa_idle.png" id="2_ygq11"]
@@ -355,6 +357,7 @@ animated_sprite = NodePath("Body_CollisionShape2D/AnimatedSprite2D")
 action = NodePath("Body_CollisionShape2D/Defend")
 actionCDTime = 0.8
 animator = NodePath("AnimationPlayer")
+character_texture = ExtResource("2_ilpk7")
 
 [node name="Body_CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1

@@ -1,10 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cd37wvhye2w6q"]
+[gd_scene load_steps=6 format=3 uid="uid://bt1jemy3r6h28"]
 
 [ext_resource type="Script" path="res://scripts/game_controller.gd" id="1_dovxb"]
 [ext_resource type="PackedScene" uid="uid://brk0snem3ladu" path="res://scenes/UI/GameUI.tscn" id="2_mp774"]
 [ext_resource type="PackedScene" uid="uid://dvmju2615f3sg" path="res://scenes/level.tscn" id="3_ge0t1"]
-[ext_resource type="PackedScene" uid="uid://bisonmpnq7akr" path="res://scenes/player_Pom(spiky).tscn" id="3_nk3ad"]
-[ext_resource type="PackedScene" uid="uid://ce4s2fdhfacir" path="res://scenes/player_Pa(bubble).tscn" id="4_xepoi"]
+[ext_resource type="PackedScene" uid="uid://dctlctwod7ltq" path="res://scenes/player_Pom(spiky).tscn" id="3_nk3ad"]
+[ext_resource type="PackedScene" uid="uid://dyf04uveuy1pd" path="res://scenes/player_Pa(bubble).tscn" id="4_xepoi"]
 
 [node name="GameScene" type="Node2D" node_paths=PackedStringArray("timer", "pom", "player_1_pos", "pa", "player_2_pos")]
 script = ExtResource("1_dovxb")
@@ -27,10 +27,10 @@ position = Vector2(-245, 158)
 [node name="Player_2_init_position" type="Node2D" parent="."]
 position = Vector2(245, 158)
 
-[node name="Pom" parent="." instance=ExtResource("3_nk3ad")]
-
 [node name="Pa" parent="." instance=ExtResource("4_xepoi")]
-player_num = 1
 actionCDTime = 0.0
+
+[node name="Pom" parent="." instance=ExtResource("3_nk3ad")]
+player_num = 1
 
 [node name="Timer" type="Timer" parent="."]

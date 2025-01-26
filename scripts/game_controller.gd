@@ -25,6 +25,8 @@ var player_2_points = 0
 
 var game_ui: GameUI
 
+var on_countdown = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	game_ui = game_scene_ui.instantiate()
@@ -40,6 +42,9 @@ func _ready() -> void:
 	set_players_pos()
 
 func _process(delta: float) -> void:
+	if on_countdown:
+		game_ui.set_time(timer.time_left)
+	
 	if current_state == game_state_enum.inital_state:
 		check_initial_inputs()
 		
@@ -76,6 +81,7 @@ func set_state(state):
 func start_countdown():
 	ready_player_1 = false
 	ready_player_2 = false
+	on_countdown = true
 	game_ui.on_timer_completed.connect(start_gameplay)
 	game_ui.start_timer()
 
@@ -93,6 +99,8 @@ func start_gameplay():
 	timer.start()
 
 func end_current_round():
+	on_countdown = false
+
 	timer.wait_time = 2
 	timer.timeout.connect(restart_round)
 	timer.start()
@@ -105,9 +113,13 @@ func restart_round():
 	if player == 0:
 		pom.player_num = 1
 		pa.player_num = 0
+		game_ui.set_player_1_pfp(pa.character_texture)
+		game_ui.set_player_2_pfp(pom.character_texture)
 	else:
 		pom.player_num = 0
 		pa.player_num = 1
+		game_ui.set_player_1_pfp(pom.character_texture)
+		game_ui.set_player_2_pfp(pa.character_texture)
 	
 	set_players_pos()
 	start_countdown()

@@ -13,6 +13,7 @@ class_name Player
 @export var action: Action
 @export var actionCDTime: float
 @export var attack_shape:CollisionShape2D
+@export var character_texture:Texture2D
 @export var animator: AnimationPlayer
 
 @onready var body_collision_shape_2d = $Body_CollisionShape2D

@@ -9,6 +9,10 @@ class_name GameUI
 @export var player_victory_text: Label
 @export var anim_player:AnimationPlayer
 
+@export var timer_text : Label
+@export var player_1_Pfp : TextureRect
+@export var player_2_Pfp : TextureRect
+
 var current_time
 var in_countdown
 
@@ -57,3 +61,12 @@ func emit_round_completed():
 func emit_ending_completed():
 	on_game_finished.emit()
 	
+
+func set_time(time:float):
+	timer_text.text = str(ceil(time))
+
+func set_player_1_pfp(texture):
+	player_1_Pfp.texture = texture
+	
+func set_player_2_pfp(texture):
+	player_2_Pfp.texture = texture
